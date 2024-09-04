@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authentication Boilerplate</title>
+    <link rel="stylesheet" href="{% static 'auth_app/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Django Authentication Boilerplate</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'register_customer' %}">Register Customer</a></li>
+                <li><a href="{% url 'register_admin' %}">Register Admin</a></li>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+</body>
+</html>
