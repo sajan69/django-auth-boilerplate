@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import CustomUser, Customer, AdminUser
+from .models import CustomUser, Customer, AdminUser,OTP
 
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
@@ -8,6 +8,14 @@ class CustomUserAdmin(UserAdmin):
     fieldsets = UserAdmin.fieldsets + (
         (None, {'fields': ('is_verified',)}),
     )
+
+class OTPAdmin(admin.ModelAdmin):
+    model = OTP
+    list_display = ('user', 'otp_code', 'is_verified')
+    fields = ('user', 'otp_code', 'is_verified')
+
+
+admin.site.register(OTP, OTPAdmin)
 
 admin.site.register(CustomUser, CustomUserAdmin)
 admin.site.register(Customer)

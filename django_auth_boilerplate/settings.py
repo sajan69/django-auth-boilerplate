@@ -44,6 +44,8 @@ INSTALLED_APPS = [
     'allauth.socialaccount',  # Allauth package
     'allauth.socialaccount.providers.google',  # Allauth package
     'allauth.socialaccount.providers.facebook',  # Allauth package
+    'rest_framework',  # Django REST framework
+    'drf_yasg',  # Swagger UI for Django REST framework
 
 ]
 
@@ -63,6 +65,12 @@ ROOT_URLCONF = 'django_auth_boilerplate.urls'
 
 AUTH_USER_MODEL = 'auth_app.CustomUser'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+}
 
 TEMPLATES = [
     {
@@ -83,10 +91,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'django_auth_boilerplate.wsgi.application'
 
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',  # Allauth backend
-)
 
 
 # Database
